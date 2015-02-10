@@ -98,3 +98,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'mimimi_toys/uploads')
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'mimimi_toys/../templates'),
 )
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR,'mimimi_toys/../templates/static'),
+)
