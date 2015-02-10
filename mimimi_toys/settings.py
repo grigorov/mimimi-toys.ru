@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'landing',
+    'django_assets',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -99,6 +100,3 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'mimimi_toys/../templates'),
 )
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,'mimimi_toys/../templates/static'),
-)
