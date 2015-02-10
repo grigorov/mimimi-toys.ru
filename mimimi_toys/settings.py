@@ -24,9 +24,13 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '.mimimi-toys.ru',
+    '.mimimi-toys.ru.',
+    'localhost'
+]
 
-
+FIRST_DAY_OF_WEEK = 1
 # Application definition
 
 INSTALLED_APPS = (
@@ -36,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'landing',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -58,17 +63,21 @@ WSGI_APPLICATION = 'mimimi_toys.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mimimi_toys',
+        'USER': 'mimimi_toys',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -81,3 +90,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'mimimi_toys/static')
+
+MEDIA_URL = '/uploads/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'mimimi_toys/uploads')
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'mimimi_toys/../templates'),
+)
