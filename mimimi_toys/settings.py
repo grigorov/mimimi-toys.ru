@@ -97,6 +97,6 @@ MEDIA_URL = '/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'mimimi_toys/uploads')
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'mimimi_toys/../templates'),
+    os.path.join(BASE_DIR, 'templates'),
 )
 
