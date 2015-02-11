@@ -28,9 +28,9 @@
 					<div class="inner">
 						<header>
 							<h1><a href="/" id="logo"><img src="{% static "logo.png"%}"></a></h1>
-                            <h2 style="color: #417690 ">Mimimi-Toys</h2>
+                            <h2 style="color: #417690;font-size: 150%;">Mimimi Toys</h2>
 							<hr />
-							<p>Магазин игрушек ручной работы</p>
+							<p>Магазин уникальных игрушек ручной работы</p>
 						</header>
 						<footer>
 							<a href="#banner" class="button circled scrolly">Выбрать</a>
@@ -73,9 +73,9 @@
 		<!-- Banner -->
 			<section id="banner">
 				<header>
-					<h2><strong>Mimimi Toys</strong> - это ваш выбор.</h2>
+					<h2><strong>Mimimi Toys</strong></h2>
 					<p>
-						Все игрушки изготовлены в ручную, качество гарантировано.
+						Игрушки с душой
 					</p>
 				</header>
 			</section>
@@ -179,11 +179,12 @@
 					<p>
 						{{ toy.desc_full }}
 					</p>
+                    <p>Стоимость: {{ toy.price }} руб.</p>
 					<footer>
                         {% if toy.avalable %}
-                        <p class="button">Цена: {{ toy.price }} руб. (В наличии)</p>
+                        <p class="button">Купить (В наличии)</p>
                         {% else %}
-                        <p class="button">Цена: {{ toy.price }} руб. (Под заказ)</p>
+                        <p class="button">Купить (Под заказ)</p>
                         {% endif %}
 	<!--					<a href="#" class="button">Подробнее</a> -->
 					</footer>
