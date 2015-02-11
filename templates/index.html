@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles assets %}
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -8,16 +8,13 @@
 		<meta name="description" content="Игрушки в стиле МиМиМи"/>
 		<meta name="keywords" content="МиМиМи, игрушки, москва, игрушки в москве, github, cat, cats,ручная работа, игрушки ручной работы " />
 		<!--[if lte IE 8]><script src="{% static "css/ie/html5shiv.js" %}"></script><![endif]-->
-        <script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
-        <script type="text/javascript" src="{% static "js/jquery.dropotron.min.js" %}"></script>
-        <script type="text/javascript" src="{% static "js/jquery.scrolly.min.js" %}"></script>
-        <script type="text/javascript" src="{% static "js/skel.min.js" %}"></script>
-        <script type="text/javascript" src="{% static "js/skel-layers.min.js" %}"></script>
-        <script type="text/javascript" src="{% static "js/init.js" %}"></script>
+        {% assets "js_all" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
 		<noscript>
-            <link rel="stylesheet" href="{% static "css/skel.css"%}" />
-            <link rel="stylesheet" href="{% static "css/style.css"%}" />
-            <link rel="stylesheet" href="{% static "css/style-noscript.css" %}" />
+            {% assets "css_noscript" %}
+                <link rel="stylesheet" href="{{ ASSET_URL }}" />
+            {% endassets %}
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="{% static "css/ie/v8.css" %}"/><![endif]-->
 	</head>
