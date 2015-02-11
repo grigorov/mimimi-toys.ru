@@ -6,7 +6,7 @@ from imagekit.processors import ResizeToFill
 class Toys(models.Model):
     name = models.CharField(verbose_name="Имя игрушки:",max_length=256,help_text="Необходимо указать имя игрушки, максимальная длина имени 256 символов.")
     avatar = models.ImageField(upload_to='avatars',help_text="Большая картинка игрушки",verbose_name="Основное фото")
-    avatar_thumbnail = ImageSpecField(source='avatar',processors=[ResizeToFill(288,200)],format='JPEG',options={'quality': 90})
+    avatar_thumbnail = ImageSpecField(source='avatar',processors=[ResizeToFill(200,180)],format='JPEG',options={'quality': 90})
     avatar_mini = ImageSpecField(source='avatar',processors=[ResizeToFill(180,143)],format='JPEG',options={'quality': 90})
     desc_mini = models.TextField(verbose_name="Описание игрушки кратко",help_text="Краткое описание игрушки, выводиться в ленте игрушек")
     desc_full = models.TextField(verbose_name="История игрушки",help_text="Полное описание игрушки, выводиться в подробном описании каждой игрушки")
