@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'landing',
     'django_assets',
+    'imagekit',
 )
 
 MIDDLEWARE_CLASSES = (
