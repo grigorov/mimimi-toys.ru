@@ -5,6 +5,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = patterns('',
     url(r'^$', include('landing.urls')),
+    url(r'^page/', include('django.contrib.flatpages.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
 

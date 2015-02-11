@@ -1,4 +1,5 @@
-{% load staticfiles assets %}
+{% load staticfiles assets flatpages %}
+{% get_flatpages as flatpages %}
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -27,6 +28,7 @@
 					<div class="inner">
 						<header>
 							<h1><a href="/" id="logo"><img src="{% static "logo.png"%}"></a></h1>
+                            <h2 style="color: #417690 ">Mimimi-Toys</h2>
 							<hr />
 							<p>Магазин игрушек ручной работы</p>
 						</header>
@@ -39,8 +41,10 @@
 					<nav id="nav">
 						<ul>
 							<li><a href="/">Главная</a></li>
-                            <li><a href="/zayavka">Хотелка</a></li>
-<!--							 <li>
+                            {% for page in flatpages %}
+                            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                            {% endfor %}
+ <!--							 <li>
 								<a href="">Меню</a>
 								<ul>
 									<li><a href="#">Lorem ipsum dolor</a></li>
@@ -69,7 +73,7 @@
 		<!-- Banner -->
 			<section id="banner">
 				<header>
-					<h2><strong>МиМиМи Игрушки</strong> - это ваш выбор.</h2>
+					<h2><strong>Mimimi Toys</strong> - это ваш выбор.</h2>
 					<p>
 						Все игрушки изготовлены в ручную, качество гарантировано.
 					</p>
@@ -81,9 +85,9 @@
 				<div class="reel">
                 {%  for toy in toys %}
 					<article>
-						<a href="#" class="image featured"><img src="{{ toy.avatar_thumbnail.url }}" alt="" /></a>
+						<a href="#article_{{ toy.id }}" class="image featured"><img src="{{ toy.avatar_thumbnail.url }}" alt="" /></a>
 						<header>
-							<h3><a href="#">{{ toy.name }}</a></h3>
+							<h3><a href="#article_{{ toy.id }}">{{ toy.name }}</a></h3>
 						</header>
 						<p>{{ toy.desc_mini }}</p>
 					</article>
@@ -165,27 +169,29 @@
 			
 		<!-- Main -->
 			<div class="wrapper style2">
-
-				<article id="main" class="container special">
-					<a href="#" class="image featured"><img src="{% static "images/pic06.jpg" %}" alt="" /></a>
+                {%  for toy in toys %}
+				<article id="article_{{ toy.id }}" class="container special">
+					<a href="#article_{{ toy.id }}" class="image featured"><img src="{{ toy.avatar.url }}" alt="" /></a>
 					<header>
-						<h2><a href="#">Название игрушки</a></h2>
-						<p>
-							короткое описание игрушки
-						</p>
+						<h2><a href="#article_{{ toy.id }}">{{ toy.name }}</a></h2>
+							<p>{{ toy.desc_mini }}</p>
 					</header>
 					<p>
-						Описание подробное об игрушке
+						{{ toy.desc_full }}
 					</p>
 					<footer>
-						<a href="#" class="button">Подробнее</a>
+                        {% if toy.avalable %}
+                        <p class="button">Цена: {{ toy.price }} руб. (В наличии)</p>
+                        {% else %}
+                        <p class="button">Цена: {{ toy.price }} руб. (Под заказ)</p>
+                        {% endif %}
+	<!--					<a href="#" class="button">Подробнее</a> -->
 					</footer>
 				</article>
-
+            {% endfor %}
 			</div>
-
 		<!-- Features -->
-			<div class="wrapper style1">
+<!--			<div class="wrapper style1">
 				
 				<section id="features" class="container special">
 					<header>
@@ -227,7 +233,7 @@
 				</section>
 
 			</div>
-
+-->
 		<!-- Footer -->
 			<div id="footer">
 				<div class="container">
@@ -238,7 +244,7 @@
 								<header>
 									<h2 class="icon fa-twitter circled"><span class="label">Tweets</span></h2>
 								</header>
-								<ul class="divided">
+						<!--		<ul class="divided">
 									<li>
 										<article class="tweet">
 											Amet nullam fringilla nibh nulla convallis tique ante sociis accumsan.
@@ -264,6 +270,9 @@
 										</article>
 									</li>
 								</ul>
+								-->
+                                <a class="twitter-timeline" href="https://twitter.com/A_Makedonsky" data-widget-id="565582611415064577">Твиты от @A_Makedonsky</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 							</section>
 
 						<!-- Posts -->
@@ -271,7 +280,7 @@
 								<header>
 									<h2 class="icon fa-file circled"><span class="label">Posts</span></h2>
 								</header>
-								<ul class="divided">
+<!--								<ul class="divided">
 									<li>
 										<article class="post stub">
 											<header>
@@ -304,15 +313,15 @@
 											<span class="timestamp">2 days ago</span>
 										</article>
 									</li>
-								</ul>
+								</ul> -->
 							</section>
 
 						<!-- Photos -->
 							<section class="4u">
 								<header>
-									<h2 class="icon fa-camera circled"><span class="label">Photos</span></h2>
+									<h2 class="icon fa-camera circled"><span class="label">Instagram Photos</span></h2>
 								</header>
-								<div class="row 25% no-collapse">
+<!--								<div class="row 25% no-collapse">
 									<div class="6u">
 										<a href="#" class="image fit"><img src="{% static "images/pic10.jpg" %}" alt="" /></a>
 									</div>
@@ -336,6 +345,8 @@
 										<a href="#" class="image fit"><img src="{% static "images/pic15.jpg" %}" alt="" /></a>
 									</div>
 								</div>
+								-->
+                                <iframe src="http://widget.websta.me/in/e_makedonskaya/?s=141&w=2&h=3&b=1&p=5" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:468px; height: 468px" ></iframe> <!-- websta - web.stagram.com -->
 							</section>
 
 					</div>
