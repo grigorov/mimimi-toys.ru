@@ -171,7 +171,7 @@
 			<div class="wrapper style2">
                 {%  for toy in toys %}
 				<article id="article_{{ toy.id }}" class="container special">
-					<a href="#article_{{ toy.id }}" class="image featured"><img src="{{ toy.avatar_thumbnail.url }}" /></a>
+					<a href="#article_{{ toy.id }}" class="image featured"><img src="{{ toy.avatar.url }}" /></a>
 					<header>
 						<h2><a href="#article_{{ toy.id }}">{{ toy.name }}</a></h2>
 							<p>{{ toy.desc_mini }}</p>
