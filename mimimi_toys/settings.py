@@ -115,3 +115,6 @@ CACHES = {
 }
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SOLO_CACHE = 'default'
+SOLO_CACHE_TIMEOUT = 60*5
+SOLO_CACHE_PREFIX = 'solo'
