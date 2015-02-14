@@ -1,10 +1,11 @@
-{% load staticfiles assets flatpages %}
+{% load staticfiles assets flatpages solo_tags %}
+{% get_solo 'landing.SiteConfiguration' as site_config %}
 {% get_flatpages as flatpages %}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Mimimi-Toys.ru{% endblock %}</title>
+    <title>{% block title %}{{ site_config.title }}{% endblock %}</title>
         <link rel="shortcut icon" href="{% static "favicon.ico" %}" type="image/x-icon" />
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="Игрушки в стиле МиМиМи"/>
@@ -35,8 +36,9 @@
                 <div class="inner">
 						<header>
 							<h1><a href="/" id="logo"><img src="/static/logo.png"></a></h1>
+                             <h2 style="color: #f7755e;font-size: 350%;">{{ site_config.name }}</h2>
 							<hr>
-							<p>Магазин игрушек ручной работы</p>
+							<p>{{ site_config.slogan }}</p>
 						</header>
 						<footer>
                             <a href="#content" class="button circled scrolly">Нажми</a>
@@ -46,10 +48,10 @@
 <div>
 			<section id="content">
 				<header>
-					<p>
-						{% block content %}{% endblock %}
-					</p>
 				</header>
+            <div>
+                {% block content %}{% endblock %}
+            </div>
 			</section>
 </div>
 		<!-- Footer -->
@@ -69,9 +71,9 @@
 									</header>
 									<p>В социальных сетях</p>
 									<ul class="icons">
-										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-										<li><a href="http://instagram.com/e_makedonskaya" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="{{ site_config.fb_url }}" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                                        <li><a href="{{ site_config.vk_url }}" class="icon fa-vk"><span class="label">VK</span> </a> </li>
+										<li><a href="{{ site_config.instagram_url }}" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
 									</ul>
 								</section>
 
