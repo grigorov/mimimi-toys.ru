@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'landing',
     'django_assets',
     'imagekit',
+    'redactor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,3 +105,5 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
+REDACTOR_OPTIONS = {'lang': 'ru'}
+REDACTOR_UPLOAD = 'uploads/'

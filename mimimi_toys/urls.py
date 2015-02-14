@@ -7,6 +7,7 @@ urlpatterns = patterns('',
     url(r'^$', include('landing.urls')),
     url(r'^page/', include('django.contrib.flatpages.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^redactor/', include('redactor.urls')),
 )
 
 if DEBUG:
