@@ -74,7 +74,7 @@
 		<!-- Banner -->
 			<section id="banner">
 				<header>
-					<h2>{{ site_config.slider_header }}</h2>
+					<h2>{% autoescape off %}{{ site_config.slider_header }}{% endautoescape %}</h2>
 				</header>
 			</section>
 
@@ -358,9 +358,9 @@
 									<p>В социальных сетях</p>
 									<ul class="icons">
 	<!--									<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li> -->
-										<li><a href="{{ site_config.fb_url.url }}" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                                        <li><a href="{{ site_config.vk_url.url }}" class="icon fa-vk"><span class="label">VK</span> </a> </li>
-										<li><a href="{{ site_config.instagram_url.url }}" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="{{ site_config.fb_url }}" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                                        <li><a href="{{ site_config.vk_url }}" class="icon fa-vk"><span class="label">VK</span> </a> </li>
+										<li><a href="{{ site_config.instagram_url }}" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
 										<!-- <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
 										<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
 										<li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li> -->
