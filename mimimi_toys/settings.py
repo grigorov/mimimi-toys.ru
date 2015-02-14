@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'django_assets',
     'imagekit',
     'redactor',
+    'solo',
 )
 
 MIDDLEWARE_CLASSES = (

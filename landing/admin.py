@@ -3,8 +3,8 @@ from django.contrib.flatpages.models import FlatPage
 from django.contrib.flatpages.admin import FlatPageAdmin as OldFlatPageAdmin
 from django.contrib.flatpages.admin import FlatpageForm as OldFlatpageForm
 from redactor.widgets import RedactorEditor
-
-from landing.models import Toys
+from solo.admin import SingletonModelAdmin
+from landing.models import SiteConfiguration, Toys
 
 # Register your models here.
 
@@ -26,3 +26,4 @@ class FlatPageAdmin(OldFlatPageAdmin):
 
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, FlatPageAdmin)
+admin.site.register(SiteConfiguration, SingletonModelAdmin)

@@ -1,9 +1,10 @@
-{% load staticfiles assets flatpages %}
+{% load staticfiles assets flatpages solo_tags %}
+{% get_solo 'landing.SiteConfiguration' as site_config %}
 {% get_flatpages as flatpages %}
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Mimimi-toys.ru | Игрушки в стиле МиМиМи</title>
+		<title>{{ site_config.title }}</title>
         <link rel="shortcut icon" href="{% static "favicon.ico" %}" type="image/x-icon" />
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="Игрушки в стиле МиМиМи"/>
@@ -28,9 +29,9 @@
 					<div class="inner">
 						<header>
 							<h1><a href="/" id="logo"><img src="{% static "logo.png"%}"></a></h1>
-                            <h2 style="color: #f7755e;font-size: 350%;">Mimimi Toys</h2>
+                            <h2 style="color: #f7755e;font-size: 350%;">{{ site_config.name }}</h2>
 							<hr />
-							<p>Магазин уникальных игрушек ручной работы</p>
+							<p>{{ site_config.slogan }}</p>
 						</header>
 						<footer>
 							<a href="#banner" class="button circled scrolly">Выбрать</a>
@@ -73,7 +74,7 @@
 		<!-- Banner -->
 			<section id="banner">
 				<header>
-					<h2><strong>Mimimi Toys - </strong>Игрушки с душой</h2>
+					<h2>{{ site_config.slider_header }}</h2>
 				</header>
 			</section>
 
@@ -82,7 +83,7 @@
 				<div class="reel">
                 {%  for toy in toys %}
 					<article>
-						<a href="#article_{{ toy.id }}" class="image featured"><img src="{{ toy.avatar_mini.url }}" alt="" /></a>
+						<a href="#article_{{ toy.id }}" class="image featured"><img src="{{ toy.avatar_thumbnail.url }}" alt="" /></a>
 						<header>
 							<h3><a href="#article_{{ toy.id }}">{{ toy.name }}</a></h3>
 						</header>
@@ -356,9 +357,10 @@
 									</header>
 									<p>В социальных сетях</p>
 									<ul class="icons">
-										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-										<li><a href="http://instagram.com/e_makedonskaya" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+	<!--									<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li> -->
+										<li><a href="{{ site_config.fb_url.url }}" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                                        <li><a href="{{ site_config.vk_url.url }}" class="icon fa-vk"><span class="label">VK</span> </a> </li>
+										<li><a href="{{ site_config.instagram_url.url }}" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
 										<!-- <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
 										<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
 										<li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li> -->
