@@ -229,7 +229,7 @@
 		}
 
 	/* Image */
-        .bigimageleft {
+        #bigimageleft {
         width: 40%;
         float: left;
         margin: 10px 10px 10px 10px;
