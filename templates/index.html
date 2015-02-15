@@ -83,7 +83,7 @@
 			<div class="wrapper style2">
                 {%  for toy in toys %}
 				<article id="article_{{ toy.id }}" class="container special">
-					<a href="{{ toy.avatar.url }}" rel="gallery" title="{{ toy.name }}" class="image featured fancybox"><img src="{{ toy.avatar_thumbnail.url }}" id="bigimageleft" /></a>
+					<a href="{{ toy.avatar.url }}" rel="gallery" title="{{ toy.name }}" class="image featured fancybox"><img src="{{ toy.avatar.url }}" id="bigimageleft" /></a>
 					<header>
 						<h2><a href="#article_{{ toy.id }}">{{ toy.name }}</a></h2>
 							<p>{{ toy.desc_mini }}</p>
