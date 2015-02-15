@@ -9,10 +9,17 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="Игрушки в стиле МиМиМи"/>
 		<meta name="keywords" content="МиМиМи, игрушки, москва, игрушки в москве, github, cat, cats,ручная работа, игрушки ручной работы " />
+        <link rel="stylesheet" href="{% static "fancybox/css/jquery.fancybox.css" %}" type="text/css" media="screen"/>
 		<!--[if lte IE 8]><script src="{% static "css/ie/html5shiv.js" %}"></script><![endif]-->
         {% assets "js_all" %}
         <script type="text/javascript" src="{{ ASSET_URL }}"></script>
         {% endassets %}
+        <script src="{% static "fancybox/js/jquery.fancybox.pack.js" %}" type="text/javascript"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+            $('img[class*=fancybox]').fancybox();
+            });
+        </script>
 		<noscript>
             {% assets "css_noscript" %}
                 <link rel="stylesheet" href="{{ ASSET_URL }}" />
@@ -28,7 +35,7 @@
 				<!-- Inner -->
 					<div class="inner">
 						<header>
-							<h1><a href="/" id="logo"><img src="{% static "logo.png"%}"></a></h1>
+							<h1><a href="/" id="logo"><img src="{% static "logo.png"%}" class="fancybox"></a></h1>
                             <h2 style="color: #f7755e;font-size: 350%;">{{ site_config.name }}</h2>
 							<hr />
 							<p>{{ site_config.slogan }}</p>
@@ -62,7 +69,7 @@
 				<div class="reel">
                 {%  for toy in toys %}
 					<article>
-						<a href="#article_{{ toy.id }}" class="image featured"><img src="{{ toy.avatar_thumbnail.url }}" alt="" /></a>
+						<a href="#article_{{ toy.id }}" class="image featured"><img src="{{ toy.avatar_thumbnail.url }}" alt="" class="fancybox" /></a>
 						<header>
 							<h3><a href="#article_{{ toy.id }}">{{ toy.name }}</a></h3>
 						</header>
@@ -76,7 +83,7 @@
 			<div class="wrapper style2">
                 {%  for toy in toys %}
 				<article id="article_{{ toy.id }}" class="container special">
-					<a href="#article_{{ toy.id }}" class="image featured"><img src="{{ toy.avatar.url }}" id="bigimageleft" /></a>
+					<a href="#article_{{ toy.id }}" class="image featured"><img src="{{ toy.avatar.url }}" id="bigimageleft" class="fancybox"/></a>
 					<header>
 						<h2><a href="#article_{{ toy.id }}">{{ toy.name }}</a></h2>
 							<p>{{ toy.desc_mini }}</p>
