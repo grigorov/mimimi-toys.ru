@@ -177,8 +177,10 @@
 		section,
 		article
 		{
-			margin-bottom: 3em;
-            margin-top: 7em;
+			margin-bottom: 2em;
+            margin-top: 1em;
+            display: block;
+            padding: 20px;
 		}
 		
 			section > :last-child,
@@ -227,6 +229,12 @@
 		}
 
 	/* Image */
+        .bigimageleft {
+        width: 40%;
+        float: left;
+        margin: 10px 10px 10px 10px;
+        display: block;
+        }
 
 		.image
 		{
@@ -1213,9 +1221,3 @@
 			{
 				text-align: center;
 			}
-.bigimageleft {
-    width: 60%;
-    float: left;
-    margin: 10px 10px 10px 10px;
-    display: block;
-}
