@@ -59,6 +59,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
+
 )
 
 ROOT_URLCONF = 'mimimi_toys.urls'
@@ -107,14 +108,22 @@ TEMPLATE_DIRS = (
 REDACTOR_OPTIONS = {'lang': 'ru'}
 REDACTOR_UPLOAD = 'uploads/'
 
-CACHES = {
-    'default': {
-        'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': '/tmp/redis.sock',
-    },
-}
+#CACHES = {
+#    'default': {
+#        'BACKEND': 'redis_cache.RedisCache',
+#        'LOCATION': '/tmp/redis.sock',
+#    },
+#}
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-SOLO_CACHE = 'default'
-SOLO_CACHE_TIMEOUT = 60*5
-SOLO_CACHE_PREFIX = 'solo'
+#SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+#SOLO_CACHE = 'default'
+#SOLO_CACHE_TIMEOUT = 60*5
+#SOLO_CACHE_PREFIX = 'solo'
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_USER = 'sysadmin@mimimi-toys.ru'
+EMAIL_HOST_PASSWORD = '8r78rt'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'webmaster@mimimi-toys.ru'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

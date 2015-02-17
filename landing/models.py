@@ -1,7 +1,23 @@
 from django.db import models
-from imagekit.models import ImageSpecField
+from imagekit.models import ImageSpecField, ProcessedImageField
 from imagekit.processors import ResizeToFill
 from solo.models import SingletonModel
+
+class Picture(models.Model):
+    title = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='gallery')
+    def __unicode__(self):
+        return self.title
+    def __str__(self):
+        return self.title
+
+class Gallery(models.Model):
+    title = models.CharField(max_length=50)
+    pictures = models.ManyToManyField(Picture)
+    def __unicode__(self):
+        return self.title
+    def __str__(self):
+        return self.title
 
 class SiteConfiguration(SingletonModel):
     name = models.CharField(max_length=255, default='Mimimi Toys',verbose_name="Название сайта",help_text="Например: Mimimi Toys")
@@ -26,8 +42,10 @@ class Toys(models.Model):
     avatar_mini = ImageSpecField(source='avatar',processors=[ResizeToFill(180,143)],format='JPEG',options={'quality': 90})
     desc_mini = models.TextField(verbose_name="Описание игрушки кратко",help_text="Краткое описание игрушки, выводиться в ленте игрушек")
     desc_full = models.TextField(verbose_name="История игрушки",help_text="Полное описание игрушки, выводиться в подробном описании каждой игрушки")
-    price = models.IntegerField(verbose_name="Стоимость игрушки",help_text="Необходимо указать стоимость игрушки в рублях",default=1000)
-    avalable = models.BooleanField(verbose_name="В наличии",help_text="Указать, имеется ли в наличии",default=1)
+    price = models.IntegerField(verbose_name="Стоимость игрушки",help_text="Необходимо указать стоимость игрушки в рублях", default=1000)
+    avalable = models.BooleanField(verbose_name="В наличии",help_text="Указать, имеется ли в наличии", default=1)
+    image_gallery = models.ForeignKey(Gallery,null=True,blank=True)
+
     def __unicode__(self):
         return "Игрушки"
 
