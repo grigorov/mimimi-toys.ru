@@ -13,6 +13,8 @@ class OrderForm(forms.ModelForm):
         toy = Toys.objects.get(id=data['toy_id'])
         instance = Order(**data)
         instance.toy_id = toy.id
+        instance.mob = data['mob']
+        instance.price = data['price']
         instance.save()
     def __init__(self, *args, **kwargs):
         super(OrderForm, self).__init__(*args, **kwargs)
