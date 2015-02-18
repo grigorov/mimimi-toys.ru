@@ -5,9 +5,9 @@ from .models import Toys, Order
 class OrderForm(forms.ModelForm):
     price = forms.IntegerField(widget=forms.HiddenInput)
     toy_id = forms.IntegerField(widget=forms.HiddenInput)
-    email = forms.EmailField(label="Email",widget=forms.EmailInput(attrs={'placeholder':'Email:olya@mail.ru'}))
-    mob = forms.CharField(label="+79051234567",widget=forms.TextInput(attrs={'placeholder':'+79051234567','type':'tel'}),max_length=12,help_text="Укажите номер телефона. Наш менеджер с вами свяжиться.")
-    text = forms.CharField(label="Комментарий",widget=forms.Textarea(attrs={'cols':'5','rows':'5','placeholder':'Станция метро: Охотный ряд, с 9 до 18 часов'}),max_length=200,help_text="Укажите комментарий к заказу, станция метро где удобно было бы забрать, время в которое удобно было бы вам.")
+    email = forms.EmailField(label="Email",widget=forms.EmailInput(attrs={'placeholder':'Email'}))
+    mob = forms.CharField(label="+79000000000",widget=forms.TextInput(attrs={'placeholder':'+79000000000','type':'tel'}),max_length=12)
+    text = forms.CharField(label="Комментарий",widget=forms.Textarea(attrs={'cols':'5','rows':'5'}),max_length=200)
     def save(self):
         data = self.cleaned_data
         toy = Toys.objects.get(id=data['toy_id'])

@@ -78,9 +78,9 @@ class Order(models.Model):
         ('Done','Выполнен'),
         ('Undone','Не Выполнен'),
     )
-    name = models.CharField(max_length=255,verbose_name="Имя",help_text="Укажите имя, это поле обязательное. ")
-    email = models.EmailField(verbose_name="Email",help_text="Поле обязательно для заполнения")
-    mob = PhoneNumberField(verbose_name="Ваш номе телефона",help_text="Укажите номер телефона, это поле обязательно для заполнения, максимальное кол-во цифр 12, пример: +74957777777",max_length=12)
+    name = models.CharField(max_length=255,verbose_name="Имя",help_text="Укажите имя, это поле обязательное. ",null=True,blank=True)
+    email = models.EmailField(verbose_name="Email",help_text="Поле обязательно для заполнения",null=True,blank=True)
+    mob = models.CharField(verbose_name="Телефон",help_text="Укажите номер телефона",max_length=12,null=True,blank=True,default="+79000000000")
     text = models.TextField(verbose_name="Комментарий к заказу",help_text="Укажите комментарий к заказу",null=True,blank=True,default="Станция метро:")
     price = models.IntegerField(verbose_name="Цена",null=True,blank=True)
     toy_id = models.IntegerField(verbose_name="Игрушка",null=True,blank=True)
