@@ -26,13 +26,13 @@ def add_order(request):
         form.is_valid()
         page = form.save()
         subject = "Заказ игрушки"
-        sender = page['email']
+        sender = 'webmaster@mimimi-toys.ru'
         recipients = ['order@mimimi-toys.ru']
+        toy = Toys.objects.get(id=form.cleaned_data['toy_id'])
         t = loader.get_template('email.txt')
         c = Context({
             'form': form.cleaned_data,
-            'page': page
-
+            'toy' : toy
         })
         send_mail(subject, t.render(c), sender, recipients)
         return HttpResponseRedirect('/')

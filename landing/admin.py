@@ -7,12 +7,12 @@ from solo.admin import SingletonModelAdmin
 from landing.models import SiteConfiguration, Toys, Gallery, Picture,Order
 
 class ToysAdmin(admin.ModelAdmin):
-    list_display = ('name','admin_thumbnail','price')
+    list_display = ('id','name','admin_thumbnail','price')
 
 admin.site.register(Toys, ToysAdmin)
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('name','email','mob')
+    list_display = ('name','email','mob','done_is')
 admin.site.register(Order,OrderAdmin)
 
 class GalleryAdmin(admin.ModelAdmin):

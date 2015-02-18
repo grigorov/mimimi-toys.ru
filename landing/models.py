@@ -62,6 +62,7 @@ class Toys(models.Model):
     class Meta:
         verbose_name = "Игрушки"
         verbose_name_plural = "Игрушки"
+        ordering = ('id',)
 
     def admin_thumbnail(self):
         image = self.avatar
@@ -73,12 +74,17 @@ class Toys(models.Model):
     admin_thumbnail.allow_tags = True
 
 class Order(models.Model):
-    name = models.CharField(max_length=255,verbose_name="Имя",help_text="Укажите имя")
-    email = models.EmailField(verbose_name="Ваш Email",help_text="Укажите Email")
-    mob = PhoneNumberField(verbose_name="Ваш номе телефона",help_text="укажите номер телефона для связи")
-    text = models.TextField(verbose_name="Комментарий к заказу",help_text="Укажите комментарий к заказу")
+    DONE_CHOICES = (
+        ('Done','Выполнен'),
+        ('Undone','Не Выполнен'),
+    )
+    name = models.CharField(max_length=255,verbose_name="Имя",help_text="Укажите имя, это поле обязательное. ")
+    email = models.EmailField(verbose_name="Email",help_text="Поле обязательно для заполнения")
+    mob = PhoneNumberField(verbose_name="Ваш номе телефона",help_text="Укажите номер телефона, это поле обязательно для заполнения, максимальное кол-во цифр 12, пример: +74957777777",max_length=12)
+    text = models.TextField(verbose_name="Комментарий к заказу",help_text="Укажите комментарий к заказу",null=True,blank=True,default="Станция метро:")
     price = models.IntegerField(verbose_name="Цена",null=True,blank=True)
     toy_id = models.IntegerField(verbose_name="Игрушка",null=True,blank=True)
+    done_is = models.CharField(choices=DONE_CHOICES,verbose_name="Выполнен ли заказ?",default='Undone',max_length=6)
 
     def __unicode__(self):
         return self.name

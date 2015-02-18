@@ -2,7 +2,7 @@
 
 на игрушку {{ toy.name }}
 
-Стоимость: {{ toy.price }}
+Стоимость: {{ form.price }}
 
 Контакты:
 
@@ -11,10 +11,4 @@ Mobile: {{ form.mob }}
 
 Примечание: {{ form.text }}
 
-
-
-{{ page.price }}
-
-
-{{ page.type }}
 

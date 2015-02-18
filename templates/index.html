@@ -24,6 +24,11 @@
             $(".zakaz").fancybox({
                  openEffect  : 'none',
                 closeEffect : 'none',
+                minWidth: 250,
+                maxWidth: 450,
+                width: 450,
+                autoSize:false,
+                fitToView:false,
                 afterLoad   : function() {
                     this.content = this.content.html();
                 }
@@ -79,9 +84,9 @@
 				<div class="reel">
                 {%  for toy in toys %}
 					<article>
-						<a href="#article_{{ toy.id }}" class="image featured"><img src="{{ toy.avatar_thumbnail.url }}" alt="" /></a>
+						<a href="#toy_{{ toy.id }}" class="image featured"><img src="{{ toy.avatar_thumbnail.url }}" alt="" /></a>
 						<header>
-							<h3><a href="#article_{{ toy.id }}">{{ toy.name }}</a></h3>
+							<h3><a href="#toy_{{ toy.id }}">{{ toy.name }}</a></h3>
 						</header>
 						<p>{{ toy.desc_mini }}</p>
 					</article>
@@ -93,26 +98,26 @@
         {%  for toy in toys %}
 			<div class="wrapper style2">
 
-				<article id="article_{{ toy.id }}" class="container special" style="display: block">
-                <div class="fotorama" data-nav="thumbs" style="float: left; width: 400px; display: block">
+				<article id="toy_{{ toy.id }}" class="container special" style="display: block">
+                <div class="fotorama" data-nav="thumbs" data-width="300px" style="float: left; display: block ">
                     {% if toy.image_gallery %}
-                            <img src="{{ toy.avatar_thumbnail.url }}"  data-caption="{{ toy.name }}" title="{{ toy.name }}" width="380" height="380"></a>
+                            <img src="{{ toy.avatar_thumbnail.url }}"  title="{{ toy.name }}" width="380" height="380"></a>
                             {% for image in toy.image_gallery.pictures.all %}
-                                <img  src="{{ image.image_mini.url }}" data-caption="{{ toy.name }}" width="380" height="380"></a>
+                                <img  src="{{ image.image_mini.url }}"  width="380" height="380"></a>
                             {% endfor %}
                     {% else %}
-                       <img src="{{ toy.avatar_thumbnail.url }}" data-caption="{{ toy.name }}" title="{{ toy.name }}" width="380" height="380"></a>
+                       <img src="{{ toy.avatar_thumbnail.url }}"  title="{{ toy.name }}" width="380" height="380"></a>
                     {% endif %}
                 </div>
 					<header>
-						<h2><a href="#article_{{ toy.id }}">{{ toy.name }}</a></h2>
+						<h2><a href="#toy_{{ toy.id }}">{{ toy.name }}</a></h2>
 							<p>{{ toy.desc_mini }}</p>
                              <div style="display: inline-block">
-					<p>
-						{{ toy.desc_full }}
-					</p>
-                    <p>Стоимость: {{ toy.price }} руб.</p>
-                </div
+					            <p>
+						        {{ toy.desc_full }}
+					            </p>
+                                    <p>Стоимость: {{ toy.price }} руб.</p>
+                             </div>
 					</header>
 
 					<footer>
@@ -121,7 +126,6 @@
                         {% else %}
                         <a href="#zakaz_{{ toy.id }}" class="button fancybox zakaz">Заказать</a>
                         {% endif %}
-	<!--					<a href="#" class="button">Подробнее</a> -->
 					</footer>
 				</article>
                 <div id="zakaz_{{ toy.id }}" style="display:none;width:300px;">
@@ -133,11 +137,13 @@
             {% csrf_token %}
                 <input id="toy_id" type="hidden" name="toy_id" value="{{ toy.id }}">
                 <input id="id_price" name="price" type="hidden" value="{{ toy.price }}">
-                        {% for field in form.visible_fields %}
+               {% for field in form.visible_fields %}
                 {{ field.errors }}
-                {{ field.help_text }}
-                {{ field }}
-            {% endfor %}
+                   {{ field.label }}
+                   {{ field }}
+                   {{ field.help_text }}
+                <br/>
+               {% endfor %}
             <input type="submit" name="submit" value="Заказать" />
         </form>
                 </div>
