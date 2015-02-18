@@ -8,6 +8,8 @@ urlpatterns = patterns('',
     url(r'^page/', include('django.contrib.flatpages.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^redactor/', include('redactor.urls')),
+    url(r'^add_order/$', 'landing.views.add_order', name='add_order'),
+
 )
 
 # Serve media files through Django if in debug mode

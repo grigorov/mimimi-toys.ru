@@ -1,0 +1,20 @@
+Вам поступил заказ от {{ form.name }}
+
+на игрушку {{ toy.name }}
+
+Стоимость: {{ toy.price }}
+
+Контакты:
+
+email: {{ form.email }}
+Mobile: {{ form.mob }}
+
+Примечание: {{ form.text }}
+
+
+
+{{ page.price }}
+
+
+{{ page.type }}
+

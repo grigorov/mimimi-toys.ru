@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'imagekit',
     'redactor',
     'solo',
+    'phonenumber_field',
 )
 
 MIDDLEWARE_CLASSES = (

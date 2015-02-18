@@ -4,12 +4,16 @@ from django.contrib.flatpages.admin import FlatPageAdmin as OldFlatPageAdmin
 from django.contrib.flatpages.admin import FlatpageForm as OldFlatpageForm
 from redactor.widgets import RedactorEditor
 from solo.admin import SingletonModelAdmin
-from landing.models import SiteConfiguration, Toys, Gallery, Picture
+from landing.models import SiteConfiguration, Toys, Gallery, Picture,Order
 
 class ToysAdmin(admin.ModelAdmin):
     list_display = ('name','admin_thumbnail','price')
 
 admin.site.register(Toys, ToysAdmin)
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('name','email','mob')
+admin.site.register(Order,OrderAdmin)
 
 class GalleryAdmin(admin.ModelAdmin):
     list_display = ('title',)
