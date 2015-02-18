@@ -141,8 +141,7 @@
                 <input id="toy_id" type="hidden" name="toy_id" value="{{ toy.id }}">
                 <input id="id_price" name="price" type="hidden" value="{{ toy.price }}">
                {% for field in form.visible_fields %}
-                {{ field.errors }}
-                   {{ field.label }}
+                   {{ field.errors }}
                    {{ field }}
                 <br/>
                {% endfor %}
