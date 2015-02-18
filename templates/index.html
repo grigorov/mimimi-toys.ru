@@ -95,35 +95,35 @@
 			
 		<!-- Main -->
         {%  for toy in toys %}
-			<div class="wrapper style2">
+			<div class="wrapper style2" itemscope itemtype="http://schema.org/Product">
 
 				<article id="toy_{{ toy.id }}" class="container special" style="display: block">
                 <div class="fotorama" data-nav="thumbs" data-width="300px" style="float: left; display: block ">
                     {% if toy.image_gallery %}
-                            <img src="{{ toy.avatar_thumbnail.url }}"  title="{{ toy.name }}" width="380" height="380"></a>
+                            <img src="{{ toy.avatar_thumbnail.url }}" itemprop="image" title="{{ toy.name }}" width="380" height="380"></a>
                             {% for image in toy.image_gallery.pictures.all %}
-                                <img  src="{{ image.image_mini.url }}"  width="380" height="380"></a>
+                                <img  src="{{ image.image_mini.url }}" itemprop="image" width="380" height="380"></a>
                             {% endfor %}
                     {% else %}
-                       <img src="{{ toy.avatar_thumbnail.url }}"  title="{{ toy.name }}" width="380" height="380"></a>
+                       <img src="{{ toy.avatar_thumbnail.url }}" itemprop="image" title="{{ toy.name }}" width="380" height="380"></a>
                     {% endif %}
                 </div>
 					<header>
-						<h2><a href="#toy_{{ toy.id }}">{{ toy.name }}</a></h2>
+						<h2><a href="#toy_{{ toy.id }}" itemprop="name">{{ toy.name }}</a></h2>
                             <span><script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="ru" data-yashareTitle="{{ toy.name }}" data-yashareImage="{{ toy.avatar_thumbnail.url }}" data-yashareDescription="{{ toy.desc_mini }}" data-yashareType="small" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yashareTheme="counter"></div></span>
-							<p>{{ toy.desc_mini }}</p>
+							<p itemprop="description">{{ toy.desc_mini }}</p>
 
-                             <div style="display: inline-block">
+                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display: inline-block">
 					            <p>
 						        {{ toy.desc_full }}
 					            </p>
-                                    <p>Стоимость: {{ toy.price }} руб.</p>
+                                    <p>Стоимость: <span itemprop="price">{{ toy.price }}</span> <span itemprop="priceCurrency" style="display: none">RUB</span>руб.</p>
                              </div>
 					</header>
 
 					<footer>
                         {% if toy.avalable %}
-                        <a href="#zakaz_{{ toy.id }}" class="button fancybox zakaz">Купить</a>
+                        <a href="#zakaz_{{ toy.id }}" itemprop="availability" class="button fancybox zakaz">Купить</a>
                         {% else %}
                         <a href="#zakaz_{{ toy.id }}" class="button fancybox zakaz">Заказать</a>
                         {% endif %}
